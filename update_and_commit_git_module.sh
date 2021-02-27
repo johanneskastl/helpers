@@ -66,6 +66,10 @@ git checkout "${HASH_OF_LAST_COMMIT}" || exit 18
 
 popd > /dev/null || exit 19
 
+#
+# Back in the parent repository
+#
+
 git add "${MODULE}" || exit 21
 
 git commit -m "UPDATE git submodule ${MODULE} to commit ${HASH_OF_LAST_COMMIT}: ${MESSAGE_OF_LAST_COMMIT}" || exit 23
