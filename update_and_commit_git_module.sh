@@ -10,10 +10,10 @@
         exit 1
 }
 
-MODULE="${PWD}/${1}"
+MODULE="${1}"
 echo "Working on git submodule ${MODULE}"
 
-[ -d "${MODULE}" ] || {
+[ -d "${PWD}/${MODULE}" ] || {
         echo "Directory ${MODULE} does not exist. Aborting..."
         exit 2
 }
@@ -23,7 +23,7 @@ echo "Working on git submodule ${MODULE}"
 # Abort if neither exists.
 #
 { 
-        [ -e "${MODULE}/meta/main.yml" ] || [ -e "${MODULE}/README.md" ]
+        [ -e "${PWD}/${MODULE}/meta/main.yml" ] || [ -e "${PWD}/${MODULE}/README.md" ]
 } || {
         echo "git submodule ${MODULE} is not fully initalized and checked out."
         echo "Run 'git submodule init ${MODULE} && git submodule update ${MODULE}'"
@@ -34,7 +34,7 @@ echo "Working on git submodule ${MODULE}"
 # Ready for take off...
 #
 
-pushd "${MODULE}" > /dev/null || exit 11
+pushd "${PWD}/${MODULE}" > /dev/null || exit 11
 
 if LANG=C git status | grep -q "nothing to commit, working tree clean"
 then
