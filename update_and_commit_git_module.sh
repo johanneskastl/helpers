@@ -45,7 +45,7 @@ else
         exit 12
 fi
 
-git checkout master || exit 13
+( git checkout main || git checkout main ) || exit 13
 
 git pull || exit 15
 
@@ -65,6 +65,10 @@ MESSAGE_OF_LAST_COMMIT="$(git log -1 --pretty=%B)"
 git checkout "${HASH_OF_LAST_COMMIT}" || exit 18
 
 popd > /dev/null || exit 19
+
+#
+# Back in the parent repository
+#
 
 git add "${MODULE}" || exit 21
 
