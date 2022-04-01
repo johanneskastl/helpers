@@ -19,11 +19,11 @@ echo "Working on git submodule ${MODULE}"
 }
 
 #
-# Check if either a 'meta/main.yml' file (for ansible roles) or a 'README.md' file (for terraform modules) is existing
+# Check if either a 'meta/main.yml' file (for ansible roles), a 'README.md' file (for terraform modules) or a file called 'LICENSE' is existing
 # Abort if neither exists.
 #
 { 
-        [ -e "${PWD}/${MODULE}/meta/main.yml" ] || [ -e "${PWD}/${MODULE}/README.md" ]
+        [ -e "${PWD}/${MODULE}/meta/main.yml" ] || [ -e "${PWD}/${MODULE}/README.md" ] || [ -e "${PWD}/${MODULE}/LICENSE" ]
 } || {
         echo "git submodule ${MODULE} is not fully initalized and checked out."
         echo "Run 'git submodule init ${MODULE} && git submodule update ${MODULE}'"
