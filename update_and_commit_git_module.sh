@@ -45,7 +45,7 @@ else
         exit 12
 fi
 
-( git checkout master || git checkout main ) || exit 13
+( git switch main || git switch master ) || exit 13
 
 git pull || exit 15
 
