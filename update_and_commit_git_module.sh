@@ -64,6 +64,8 @@ MESSAGE_OF_LAST_COMMIT="$(git log -1 --pretty=%B)"
 
 git checkout "${HASH_OF_LAST_COMMIT}" || exit 18
 
+echo "Finished ${MODULE}, jumping back into base directory"
+
 popd > /dev/null || exit 19
 
 #
